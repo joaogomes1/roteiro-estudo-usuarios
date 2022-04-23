@@ -5,6 +5,8 @@
 COUNTER=0
 USERS=10
 
+mkdir /etc/temp_skel
+
 while [ $COUNTER != $USERS ]
 do
   
@@ -16,7 +18,7 @@ do
   # Temporary employee
   if [ $DESLIGAMENTO != 0 ]; then
 	
-	useradd -m -p $(echo $USERNAME | openssl passwd -1 -stdin) -k /etc/temp_skel -g users $USERNAME
+	useradd -m -p $(echo $USERNAME | openssl passwd -1 -stdin) -k /etc/joao_skel_temp -g users $USERNAME
 	# if [ $? -ne 0 ]; then echo 'Aborted'; exit; fi
 	errorCheck $?
 
@@ -29,7 +31,7 @@ do
 	groupadd $USERNAME
 	errorCheck $?
 	
-	useradd -m -p $(echo $USERNAME | openssl passwd -1 -stdin) -g $USERNAME -G storage,scanner,users $USERNAME
+	useradd -m -p $(echo $USERNAME | openssl passwd -1 -stdin) -g $USERNAME k /-G storage,scanner,users $USERNAME
 	errorCheck $?
 
 		
