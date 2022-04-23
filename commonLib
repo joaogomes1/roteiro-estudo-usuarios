@@ -1,0 +1,9 @@
+# commonLib
+errorCheck()
+{
+  ERROR_CODE=$1
+  if [ $ERROR_CODE -ne 0 ]; then
+	echo 'Aborted';
+	exit
+  fi
+}
