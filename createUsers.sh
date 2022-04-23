@@ -5,8 +5,6 @@
 COUNTER=0
 USERS=10
 
-mkdir /etc/temp_skel
-
 while [ $COUNTER != $USERS ]
 do
   
@@ -31,7 +29,7 @@ do
 	groupadd $USERNAME
 	errorCheck $?
 	
-	useradd -m -p $(echo $USERNAME | openssl passwd -1 -stdin) -g $USERNAME k /-G storage,scanner,users $USERNAME
+	useradd -m -p $(echo $USERNAME | openssl passwd -1 -stdin) -g $USERNAME -k /etc/joao_skel_regular -G storage,scanner,users $USERNAME
 	errorCheck $?
 
 		
