@@ -1,9 +1,14 @@
 # commonLib
 errorCheck()
 {
-  ERROR_CODE=$1
-  if [ $ERROR_CODE -ne 0 ]; then
-	echo 'Aborted';
-	exit
+  STATUS_CODE=$1
+  PID_CALLER=$2
+#  echo $STATUS_CODE
+#  echo $PID_CALLER
+  if [ $STATUS_CODE -ne 0 ]; then
+	kill $PID_CALLER
+  else
+	  echo "OK"
   fi
+  
 }
