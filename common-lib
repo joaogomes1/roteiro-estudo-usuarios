@@ -18,10 +18,10 @@ errorCheck()
 	  
 	fi
 	
-	echo "[DEBUG]: killing caller $PID_CALLER"
+	#echo "[DEBUG]: killing caller $PID_CALLER"
 	kill $PID_CALLER
 	
-	echo "[DEBUG]: commonLib still going..."
+	#echo "[DEBUG]: commonLib still going..."
 	
   else
 	  echo "OK"
