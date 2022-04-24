@@ -1,1 +1,2 @@
-To learn how to use userpopper, navigate to the cloned directory and enter ./userpopper.sh --help
+Once in the main directory, make all .sh files executable by entering 'chmod +x *.sh' (whithout quotes).
+Then, to learn how to use userpopper, enter './userpopper.sh --help' (whithout quotes).

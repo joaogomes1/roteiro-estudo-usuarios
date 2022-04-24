@@ -26,7 +26,7 @@ elif [ "$OPTION" = "--remove" ]; then
 	
 elif [ "$OPTION" = "--help" ]; then
 	
-	less HELP
+	less help
 
 else
 
