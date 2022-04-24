@@ -1,11 +1,12 @@
 NAME
-	user-popper - batch create users
+	userpopper - batch create users
 
 SYNOPSIS
-	user-popper [OPTION]
+	userpopper [OPTION]
 	
 DESCRIPTION
 	Creates users from a text file list and assign them to groups, based on the expiring date of their labor contracts.
+	This program is intended for use with Arch Linux distribution.
 	
 	--create
 		create users and assign them to specific groups. For safety purposes, this program creates dedicated skeleton files, allocated in /etc directory
