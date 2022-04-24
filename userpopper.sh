@@ -30,7 +30,7 @@ elif [ "$OPTION" = "--help" ]; then
 
 else
 
-	echo "Invalid option. Try './userpopper.sh --help' for more infomation."
+	echo "Invalid option. Try './userpopper.sh --help' (without quotes) for more infomation."
 	exit
 	
 fi
