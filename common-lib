@@ -1,0 +1,30 @@
+# commonLib
+
+errorCheck()
+{
+  local STATUS_CODE=$1
+  local PID_CALLER=$2
+  
+  if [ $STATUS_CODE -ne 0 ]; then
+
+	#if [ -n "$PID_MAIN" ]; then
+	if [ "$PID_MAIN" ]; then
+	  #echo "[DEBUG]: main.sh detected!"
+	  #echo "[DEBUG]: killing main $PID_MAIN"
+	  kill $PID_MAIN
+	
+	#else
+	  #echo "[DEBUG]: main.sh not found"
+	  
+	fi
+	
+	echo "[DEBUG]: killing caller $PID_CALLER"
+	kill $PID_CALLER
+	
+	echo "[DEBUG]: commonLib still going..."
+	
+  else
+	  echo "OK"
+  fi
+  
+}

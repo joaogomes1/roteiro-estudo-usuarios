@@ -1,23 +1,33 @@
 #! /bin/sh
-	
+
 OPTION=$1
 
-if [ "$OPTION" = "--c" ]; then
-	
-	echo "creating skels..."
-	./createSkels.sh
+export PID_MAIN=$$
+#echo "[DEBUG]: pid main = $PID_MAIN"
 
-	echo "creating users..."
-	./createUsers.sh
+if [ "$OPTION" = "--create" ]; then
 	
-elif [ "$OPTION" = "--d" ]; then
-	echo "deleting users..."
-	./delUsers.sh
-	echo "deleting skels..."
-	./delSkels.sh
-elif [ "$OPTION" = "--h" ]; then
-	echo "show help"
+	echo "Calling create-skels.sh..."
+	./create-skels.sh $PID_MAIN
+
+	echo "Calling create-users.sh..."
+	./create-users.sh $PID_MAIN
+	
+elif [ "$OPTION" = "--remove" ]; then
+	
+	echo "Calling remove-users.sh..."
+	./remove-users.sh $PID_MAIN
+	
+	echo "Calling remove-skels.sh..."
+	./remove-skels.sh $PID_MAIN
+	
+elif [ "$OPTION" = "--help" ]; then
+	
+	less help
+	
 else
-	echo "invalid option. Use --h for help"
+
+	echo "Invalid option. Use --help for help"
 	exit
+	
 fi

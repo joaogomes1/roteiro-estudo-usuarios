@@ -1,37 +1,33 @@
 #! /bin/sh
-. ./commonLib
+. ./common-lib
 
 COUNTER=0
 USERS=10
 
-# Creates users
+echo "Initializing create-users.sh..."
+#echo "[DEBUG]: create-users PID $$"
+
 while [ $COUNTER != $USERS ]
 do
   
-  # USERNAME=$(sed -n "$COUNTER p" lista-usuarios)
   USERNAME=$(awk -v counter=$(expr $COUNTER + 2) 'NR==counter { print $1 }' FS=';' lista-usuarios )
-  DESLIGAMENTO=$(awk -v counter=$(expr $COUNTER + 2) 'NR==counter { print $2 }' FS=';' lista-usuarios )
+  CONTRACT_EXPIRATION_DATE=$(awk -v counter=$(expr $COUNTER + 2) 'NR==counter { print $2 }' FS=';' lista-usuarios )
   
-    
-  # Temporary employee
-  if [ $DESLIGAMENTO != 0 ]; then
+  # Creates users
+  echo "Creating user $USERNAME..."
+  
+  if [ $CONTRACT_EXPIRATION_DATE != 0 ]; then # Temporary employee
 	
 	useradd -m -p $(echo $USERNAME | openssl passwd -1 -stdin) -k /etc/joao_skel_temp -g users $USERNAME
-	# if [ $? -ne 0 ]; then echo 'Aborted'; exit; fi
-	errorCheck $?
+	errorCheck $? $$ $PID_MAIN
 
-	chage -E $DESLIGAMENTO $USERNAME
+	chage -E $CONTRACT_EXPIRATION_DATE $USERNAME
 	chage -W 15 $USERNAME
 	
-  else
+  else # Permanent employee
   
-	# É necessário criar previamente o grupo que será o grupo principal de um usuário
-	groupadd $USERNAME
-	errorCheck $?
-	
-	useradd -m -p $(echo $USERNAME | openssl passwd -1 -stdin) -g $USERNAME -k /etc/joao_skel_regular -G storage,scanner,users $USERNAME
-	errorCheck $?
-
+	useradd -m -p $(echo $USERNAME | openssl passwd -1 -stdin) -k /etc/joao_skel_regular -G storage,scanner,users $USERNAME
+	errorCheck $? $$ $PID_MAIN
 		
   fi
   
@@ -40,6 +36,5 @@ do
   
   usermod -aG audio,video $USERNAME
   
-  COUNTER=$((COUNTER + 1))
+  COUNTER=$(expr $COUNTER + 1)
 done
-

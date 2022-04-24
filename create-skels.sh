@@ -1,7 +1,10 @@
 #! /bin/sh
-. ./commonLib
+. ./common-lib
 
-# Creates skel folder and subfiles
+echo "Initializing create-skels.sh..."
+#echo "[DEBUG]: create-skels PID $$"
+
+# Creates skel directories and subfiles
 echo "Creating directory [/etc/joao_skel_regular] ..."
 mkdir /etc/joao_skel_regular
 errorCheck $? $$
