@@ -1,5 +1,8 @@
 #! /bin/sh
 
+export SKEL_REGULAR="/etc/joao_skel_regular"
+export SKEL_TEMP="/etc/joao_skel_temp"
+
 OPTION=$1
 
 export PID_MAIN=$$
@@ -23,8 +26,8 @@ elif [ "$OPTION" = "--remove" ]; then
 	
 elif [ "$OPTION" = "--help" ]; then
 	
-	less help
-	
+	less HELP
+
 else
 
 	echo "Invalid option. Try './userpopper.sh --help' for more infomation."

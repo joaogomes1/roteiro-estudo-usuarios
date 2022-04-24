@@ -3,11 +3,10 @@
 
 echo "Initializing remove-skels.sh..."
 
-echo "Removing directory [/etc/joao_skel_regular] ..."
-rm -r /etc/joao_skel_regular
+echo "Removing directory [$SKEL_REGULAR] ..."
+sudo rm -r $SKEL_REGULAR
 errorCheck $? $$
 
-echo "Removing directory [/etc/joao_skel_temp] ..."
-rm -r /etc/joao_skel_temp
+echo "Removing directory [$SKEL_TEMP] ..."
+sudo rm -r $SKEL_TEMP
 errorCheck $? $$
-

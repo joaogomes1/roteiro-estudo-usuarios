@@ -5,18 +5,18 @@ echo "Initializing create-skels.sh..."
 #echo "[DEBUG]: create-skels PID $$"
 
 # Creates skel directories and subfiles
-echo "Creating directory [/etc/joao_skel_regular] ..."
-mkdir /etc/joao_skel_regular
+echo "Creating directory [$SKEL_REGULAR]..."
+sudo mkdir $SKEL_REGULAR
 errorCheck $? $$
 
-echo "Creating file [/etc/joao_skel_regular/only-for-regular-employees] ..."
-touch /etc/joao_skel_regular/only-for-regular-employees
+echo "Creating file [$SKEL_REGULAR/only-for-regular-employees]..."
+sudo touch $SKEL_REGULAR/only-for-regular-employees
 errorCheck $? $$
 
-echo "Creating directory [/etc/joao_skel_temp] ..."
-mkdir /etc/joao_skel_temp
+echo "Creating directory [$SKEL_TEMP]..."
+sudo mkdir $SKEL_TEMP
 errorCheck $? $$
 
-echo "Creating file [etc/joao_skel_temp/only-for-temp-employees] ..."
-touch /etc/joao_skel_temp/only-for-temp-employees
+echo "Creating file [$SKEL_TEMP/only-for-temp-employees] ..."
+sudo touch $SKEL_TEMP/only-for-temp-employees
 errorCheck $? $$
