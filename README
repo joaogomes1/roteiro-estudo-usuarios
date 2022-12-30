@@ -1,2 +1,2 @@
-Once in the main directory, it is necessary to make all .sh files executable, by entering 'chmod +x *.sh' (whithout quotes).
-Then, to learn how to use userpopper, enter './userpopper.sh --help' (whithout quotes).
+Once in the main directory, it is necessary to make all .sh files executable, by entering 'chmod +x *.sh' (without quotes).
+Then, to learn how to use userpopper, enter './userpopper.sh --help' (without quotes).
